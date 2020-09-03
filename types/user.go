@@ -43,3 +43,15 @@ type UserDepartment struct {
 	DepartmentId int64      `json:"department_id"`
 	CreateTime   *time.Time `json:"create_time"`
 }
+
+type UserInfo struct {
+	Nick    string `json:"nick"`
+	UnionID string `json:"unionid"`
+	OpenID  string `json:"openid"`
+	DingID  string `json:"dingId"`
+}
+
+type UserInfoDTO struct {
+	DTOBase
+	UserInfo UserInfo `json:"user_info"`
+}

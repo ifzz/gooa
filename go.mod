@@ -3,6 +3,7 @@ module github.com/iissy/gooa
 go 1.14
 
 require (
+	github.com/gin-gonic/gin v1.6.3
 	github.com/go-gorp/gorp/v3 v3.0.2
 	github.com/go-resty/resty/v2 v2.3.0
 	github.com/go-sql-driver/mysql v1.5.0
