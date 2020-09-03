@@ -1,0 +1,25 @@
+{
+  "dingding": {
+    "size": 50,
+    "offset": 0
+  },
+  "mysql": {
+    "dingding": "root:123456@tcp(192.168.1.1:3306)/dingding?parseTime=true&loc=Local&charset=utf8",
+    "iissy": "root:123456@tcp(192.168.1.1:3306)/iissy?parseTime=true&loc=Local&charset=utf8",
+    "MaxIdleConns": 5,
+    "MaxOpenConns": 50,
+    "gorp": {
+      "trace-on": true
+    }
+  },
+  "redis": {
+    "host": "192.168.111.151",
+    "port": 6379
+  },
+  "consul": [{
+    "host": "47.244.143.251",
+    "port": 8500
+  }],
+  "srv": "micro.hrefs.srv.test",
+  "domain": "localhost"
+}

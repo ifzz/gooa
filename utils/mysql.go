@@ -5,32 +5,33 @@ import (
 	"github.com/go-gorp/gorp/v3"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/juju/errors"
+	"github.com/micro/go-micro/v2/config"
 	"log"
 	"os"
 )
 
 func InitDingDb() *gorp.DbMap {
-	db, err := sql.Open("mysql", DingConnection)
+	db, err := sql.Open("mysql", config.Get("mysql", "dingding").String(""))
 	CheckErr(err, "sql.Open failed")
 
-	db.SetMaxIdleConns(MaxIdleConns)
-	db.SetMaxOpenConns(MaxOpenConns)
+	db.SetMaxIdleConns(config.Get("mysql", "MaxIdleConns").Int(5))
+	db.SetMaxOpenConns(config.Get("mysql", "MaxOpenConns").Int(50))
 	dbMap := &gorp.DbMap{Db: db, Dialect: gorp.MySQLDialect{}}
-	if TraceOn {
+	if config.Get("mysql", "gorp", "trace-on").Bool(false) {
 		dbMap.TraceOn("[gorp]", log.New(os.Stdout, "[SQL]:", log.Lmicroseconds))
 	}
 
 	return dbMap
 }
 
-func InitIisyDb() *gorp.DbMap {
-	db, err := sql.Open("mysql", IissyConnection)
+func InitIissyDb() *gorp.DbMap {
+	db, err := sql.Open("mysql", config.Get("mysql", "iissy").String(""))
 	CheckErr(err, "sql.Open failed")
 
-	db.SetMaxIdleConns(MaxIdleConns)
-	db.SetMaxOpenConns(MaxOpenConns)
+	db.SetMaxIdleConns(config.Get("mysql", "MaxIdleConns").Int(5))
+	db.SetMaxOpenConns(config.Get("mysql", "MaxOpenConns").Int(50))
 	dbMap := &gorp.DbMap{Db: db, Dialect: gorp.MySQLDialect{}}
-	if TraceOn {
+	if config.Get("mysql", "gorp", "trace-on").Bool(false) {
 		dbMap.TraceOn("[gorp]", log.New(os.Stdout, "[SQL]:", log.Lmicroseconds))
 	}
 

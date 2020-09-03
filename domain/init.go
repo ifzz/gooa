@@ -11,7 +11,7 @@ var AppSecret = ""
 
 func init() {
 	dingDB = utils.InitDingDb()
-	iissyDB = utils.InitIisyDb()
+	iissyDB = utils.InitIissyDb()
 
 	app, err := GetAccountAppKey()
 	utils.CheckErr(err, "serialized AppKeySecret fail")
