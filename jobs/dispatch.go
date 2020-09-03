@@ -1,17 +1,17 @@
 package jobs
 
 import (
-	"github.com/kataras/golog"
+	"github.com/sirupsen/logrus"
 )
 
 type Exec func()
 
 func (e Exec) Before() {
-	golog.Infof("------开始------")
+	logrus.Info("------开始------")
 }
 
 func (e Exec) After() {
-	golog.Infof("------结束------\n")
+	logrus.Info("------结束------\n")
 }
 
 func Dispatch(e Exec) Exec {

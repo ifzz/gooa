@@ -2,7 +2,7 @@ package utils
 
 import (
 	"github.com/juju/errors"
-	"github.com/kataras/golog"
+	"github.com/sirupsen/logrus"
 	"log"
 )
 
@@ -14,7 +14,7 @@ func CheckErr(err error, msg string) {
 
 func WriteErrorLog(kind string, err error) bool {
 	if err != nil {
-		golog.Errorf("[%s] %s", kind, errors.ErrorStack(err))
+		logrus.Errorf("[%s] %s", kind, errors.ErrorStack(err))
 		return true
 	} else {
 		return false
