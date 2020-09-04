@@ -12,8 +12,8 @@ func Start() {
 
 	article := api.Group("/ding")
 	{
-		article.GET("/getuserinfo", controller.Getuserinfo)
+		article.GET("/get_user_info/:id", controller.GetUserInfo)
 	}
 
-	app.Run(":8080")
+	app.Run(":80")
 }
